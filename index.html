@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="pt-BR" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Murilo Gabriel — Desenvolvedor Web</title>
+  <meta name="description" content="Portfólio de Murilo Gabriel, desenvolvedor web que cria interfaces responsivas, funcionais e com identidade.">
+  <meta name="author" content="Murilo Gabriel Souza da Silva">
+  <meta name="theme-color" content="#08090d">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Murilo Gabriel — Desenvolvedor Web">
+  <meta property="og:description" content="Interfaces digitais onde código, clareza e identidade trabalham juntos.">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:image" content="/assets/og-cover.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Murilo Gabriel — Desenvolvedor Web">
+  <meta name="twitter:description" content="Interfaces digitais onde código, clareza e identidade trabalham juntos.">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/main.css">
+  <script>document.documentElement.classList.remove('no-js');</script>
+  <script type="module" src="/scripts/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Pular para o conteúdo</a>
+  <div class="cursor" aria-hidden="true"><span></span></div>
+  <div class="page-noise" aria-hidden="true"></div>
+
+  <header class="site-header" data-header>
+    <a class="brand" href="#inicio" aria-label="Murilo Gabriel — início" data-cursor="link">
+      <svg viewBox="0 0 44 28" aria-hidden="true"><path d="M2 25V3l10 13L22 3v22M42 8c-2-4-5-6-9-6-7 0-11 5-11 12s4 12 11 12c4 0 7-1 9-3v-9h-8"/></svg>
+      <span>Murilo Gabriel</span>
+    </a>
+    <nav class="desktop-nav" aria-label="Navegação principal">
+      <a href="#inicio">Início</a><a href="#sobre">Sobre</a><a href="#projetos">Projetos</a><a href="#stack">Stack</a>
+      <a class="nav-cta" href="#contato">Vamos conversar <span>↗</span></a>
+    </nav>
+    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu__meta"><span>MENU</span><span>LOCAL / WEB</span></div>
+    <nav aria-label="Navegação móvel">
+      <a href="#inicio"><span>01</span>Início</a><a href="#sobre"><span>02</span>Sobre</a><a href="#projetos"><span>03</span>Projetos</a><a href="#stack"><span>04</span>Stack</a><a href="#contato"><span>05</span>Contato</a>
+    </nav>
+    <a class="mobile-github" href="https://github.com/DevMurilo0/" target="_blank" rel="noopener">@DevMurilo0 ↗</a>
+  </div>
+
+  <main id="main">
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <canvas class="field" data-field aria-hidden="true"></canvas>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-monogram" aria-hidden="true">MG</div>
+      <div class="hero-grid container">
+        <div class="hero-kicker intro-item"><span class="status-dot"></span> Aberto a novas ideias e projetos</div>
+        <h1 id="hero-title" class="hero-title" aria-label="Murilo Gabriel">
+          <span class="title-line"><span>MURILO</span></span>
+          <span class="title-line title-line--indent"><span>GABRIEL</span></span>
+        </h1>
+        <div class="hero-bottom intro-item">
+          <p class="hero-role"><span>Desenvolvedor Web</span><br>interfaces com intenção.</p>
+          <div class="hero-copy">
+            <p>Transformo ideias em experiências digitais funcionais, rápidas e com identidade.</p>
+            <div class="hero-actions">
+              <a class="button button--primary" href="#projetos" data-magnetic>Ver projetos <span>↓</span></a>
+              <a class="button button--ghost" href="https://github.com/DevMurilo0/" target="_blank" rel="noopener" data-magnetic>GitHub <span>↗</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="hero-coordinates intro-item" aria-hidden="true"><span>DESIGN × CODE</span><span>WEB / BR</span></div>
+        <a class="scroll-cue intro-item" href="#sobre"><span>Explorar</span><i></i></a>
+      </div>
+    </section>
+
+    <section class="about section container" id="sobre" aria-labelledby="about-title">
+      <div class="section-index reveal"><span>01</span><span>IDENTIDADE / ABORDAGEM</span></div>
+      <div class="about-layout">
+        <h2 id="about-title" class="display-title reveal">SOBRE<span class="accent-dot">.</span></h2>
+        <div class="about-copy reveal">
+          <p class="lead">Código resolve. Design comunica. Eu gosto do ponto em que os dois se encontram.</p>
+          <p>Sou Murilo Gabriel, desenvolvedor web interessado em transformar ideias em interfaces funcionais, responsivas e visualmente marcantes.</p>
+          <p>Gosto de construir projetos do zero, entender como cada detalhe funciona e buscar equilíbrio entre implementação, experiência e identidade. Estou sempre estudando, experimentando e refinando meu jeito de criar para a web.</p>
+        </div>
+      </div>
+      <div class="about-signature reveal" aria-hidden="true"><span>MG</span><i></i><small>DESIGN × DEVELOPMENT</small></div>
+    </section>
+
+    <section class="projects section" id="projetos" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section-index reveal"><span>02</span><span>TRABALHOS SELECIONADOS</span></div>
+        <div class="projects-heading">
+          <h2 id="projects-title" class="display-title reveal">PROJETOS<br><span>SELECIONADOS</span></h2>
+          <p class="reveal">Uma seleção de interfaces construídas com atenção ao propósito, ao uso e à presença visual.</p>
+        </div>
+        <div class="projects-list" data-projects></div>
+      </div>
+    </section>
+
+    <section class="process section" aria-labelledby="process-title">
+      <div class="container">
+        <div class="section-index reveal"><span>03</span><span>DO RASCUNHO AO NAVEGADOR</span></div>
+        <div class="process-layout">
+          <h2 id="process-title" class="section-title reveal">Como eu<br>construo.</h2>
+          <ol class="process-list">
+            <li class="reveal"><span>01</span><strong>Ideia</strong><p>Entender o propósito antes da forma.</p></li>
+            <li class="reveal"><span>02</span><strong>Interface</strong><p>Dar hierarquia, ritmo e identidade.</p></li>
+            <li class="reveal"><span>03</span><strong>Desenvolvimento</strong><p>Transformar intenção em código funcional.</p></li>
+            <li class="reveal"><span>04</span><strong>Refinamento</strong><p>Testar, ajustar e remover o que não contribui.</p></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="stack section container" id="stack" aria-labelledby="stack-title">
+      <div class="section-index reveal"><span>04</span><span>TECNOLOGIAS VERIFICADAS</span></div>
+      <div class="stack-heading">
+        <h2 id="stack-title" class="display-title reveal">STACK<span class="accent-dot">.</span></h2>
+        <p class="reveal">Ferramentas presentes nos projetos públicos — sem porcentagens, só prática.</p>
+      </div>
+      <div class="stack-groups" data-stack></div>
+    </section>
+
+    <section class="github-strip section" aria-labelledby="github-title">
+      <div class="github-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="container github-layout reveal">
+        <div><span class="eyebrow">CÓDIGO ABERTO / @DEVMURILO0</span><h2 id="github-title">Mais experimentos,<br>ideias e código no GitHub.</h2></div>
+        <a class="circle-link" href="https://github.com/DevMurilo0/" target="_blank" rel="noopener" data-cursor="ver" aria-label="Explorar GitHub de Murilo Gabriel"><span>Explorar<br>GitHub</span><b>↗</b></a>
+      </div>
+    </section>
+
+    <section class="contact section" id="contato" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-index reveal"><span>05</span><span>PRÓXIMO PROJETO</span></div>
+        <div class="contact-main">
+          <p class="eyebrow reveal">TEM UMA IDEIA?</p>
+          <h2 id="contact-title" class="contact-title reveal">VAMOS<br><span>CONSTRUIR.</span></h2>
+          <div class="contact-row reveal">
+            <p>Se você procura alguém que se importa tanto com a experiência quanto com a implementação, vamos conversar.</p>
+            <a class="button button--primary" href="https://github.com/DevMurilo0/" target="_blank" rel="noopener" data-magnetic>Falar pelo GitHub <span>↗</span></a>
+          </div>
+        </div>
+        <footer class="footer">
+          <div><strong>Murilo Gabriel</strong><span>Desenvolvedor Web</span></div>
+          <p>Feito com código, critério e curiosidade.</p>
+          <div><span>© <span data-year></span></span><a href="https://github.com/DevMurilo0/" target="_blank" rel="noopener">GitHub ↗</a></div>
+        </footer>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
