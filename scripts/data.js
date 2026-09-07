@@ -4,39 +4,51 @@ export const projects = [
     slug: 'entre-tempos',
     title: 'Entre Tempos',
     type: 'Revista eletrônica interativa',
-    description: 'Uma experiência editorial que transforma cultura e arte em uma navegação poética, leve e fora do comum.',
+    year: '2025—2026',
+    description: 'Uma revista eletrônica que transforma cultura, arte e conteúdo autoral em uma experiência de navegação com identidade própria.',
     objective: 'Organizar diferentes universos — desenhos, filmes, livros, música, poemas e curiosidades — sem perder a sensação de descoberta.',
-    features: ['Navegação visual autoral', 'Conteúdo editorial modular', 'Experiência responsiva'],
     technologies: ['HTML', 'CSS', 'JavaScript'],
     repository: 'https://github.com/DevMurilo0/EntreTempos',
-    live: 'https://entretempos.vercel.app/',
-    visual: { label: 'REVISTA / CULTURA', caption: 'Histórias deixam marcas no tempo.', variant: 'editorial' }
+    live: 'https://entre-tempos.vercel.app/',
+    preview: {
+      kind: 'live',
+      poster: 'https://raw.githubusercontent.com/DevMurilo0/EntreTempos/main/entretempos.webp',
+      alt: 'Identidade visual do projeto Entre Tempos'
+    }
   },
   {
     number: '02',
     slug: 'portal-erempaf',
     title: 'Portal EREMPAF',
     type: 'Portal escolar',
-    description: 'Um portal digital que reúne áreas da comunidade escolar em uma interface direta e acessível.',
+    year: '2026',
+    description: 'Um portal digital pensado para concentrar áreas importantes da comunidade escolar em uma navegação mais direta e acessível.',
     objective: 'Criar um ponto de acesso organizado para informações da escola, séries, cardápio e contato.',
-    features: ['Arquitetura multipágina', 'Navegação responsiva', 'Integração com serviço web'],
     technologies: ['HTML', 'CSS', 'JavaScript', 'Firebase'],
     repository: 'https://github.com/DevMurilo0/portal_erempaf',
     live: null,
-    visual: { label: 'ESCOLA / INFORMAÇÃO', caption: 'Um portal para conectar a comunidade.', variant: 'portal' }
+    preview: {
+      kind: 'image',
+      poster: 'https://raw.githubusercontent.com/DevMurilo0/portal_erempaf/main/assets/banner.jpg',
+      alt: 'Elemento visual do Portal EREMPAF'
+    }
   },
   {
     number: '03',
     slug: 'enem-planner',
     title: 'ENEM Planner',
     type: 'Planejamento de estudos',
-    description: 'Uma ferramenta web focada em tornar a preparação para o ENEM mais clara, prática e organizada.',
-    objective: 'Apoiar estudantes no planejamento da rotina e no acesso a recursos úteis de preparação.',
-    features: ['Organização de estudos', 'Recursos para download', 'Interface adaptável'],
+    year: '2026',
+    description: 'Uma ferramenta web voltada à organização da rotina de estudos e ao acesso rápido a recursos úteis para preparação do ENEM.',
+    objective: 'Tornar o planejamento de estudos mais claro e prático para quem precisa organizar conteúdo, rotina e recursos.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
     repository: 'https://github.com/DevMurilo0/enemplanner',
     live: 'https://enemplanner.vercel.app/',
-    visual: { label: 'ESTUDO / FOCO', caption: 'Planeje hoje. Avance todos os dias.', variant: 'planner' }
+    preview: {
+      kind: 'live',
+      poster: 'https://raw.githubusercontent.com/DevMurilo0/enemplanner/main/icon.png',
+      alt: 'Elemento visual do ENEM Planner'
+    }
   }
 ];
 
@@ -44,4 +56,25 @@ export const stack = [
   { category: 'Front-end', items: ['HTML', 'CSS', 'JavaScript'] },
   { category: 'Serviços', items: ['Firebase'] },
   { category: 'Ferramentas', items: ['Git', 'GitHub'] }
+];
+
+export const contacts = [
+  {
+    label: 'E-mail',
+    value: 'murilogabriel.souza0@gmail.com',
+    href: 'mailto:murilogabriel.souza0@gmail.com',
+    copy: true
+  },
+  {
+    label: 'GitHub',
+    value: '@DevMurilo0',
+    href: 'https://github.com/DevMurilo0/',
+    external: true
+  },
+  {
+    label: 'Instagram',
+    value: '@murilo_gabriell0',
+    href: 'https://www.instagram.com/murilo_gabriell0?stkn=dzViZWc1cXowaGs0',
+    external: true
+  }
 ];
