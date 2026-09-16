@@ -1,4 +1,4 @@
-# Portfólio — Murilo Gabriel
+# Portfólio - Murilo Gabriel
 
 Portfólio pessoal estático, responsivo e sem dependências de runtime.
 

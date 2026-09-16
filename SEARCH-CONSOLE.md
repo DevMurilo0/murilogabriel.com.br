@@ -1,4 +1,4 @@
-# Google Search Console — murilogabriel.com.br
+# Google Search Console - murilogabriel.com.br
 
 Depois de publicar esta versão:
 
