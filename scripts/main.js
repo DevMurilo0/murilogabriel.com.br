@@ -38,7 +38,7 @@ const previewVars = preview => {
 const previewTemplate = project => {
   const destination = project.live || project.repository;
   const mediaStyle = previewVars(project.preview);
-  const poster = `<img class="project-poster" src="${project.preview.poster}" alt="${project.preview.alt}" loading="lazy">`;
+  const poster = `<img class="project-poster ${project.preview.color ? 'project-poster--color' : ''}" src="${project.preview.poster}" alt="${project.preview.alt}" loading="lazy">`;
   const livePreview = project.preview.kind === 'live' && project.live
     ? `<iframe class="project-frame" src="${project.live}" title="Prévia de ${project.title}" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>`
     : '';
@@ -75,7 +75,7 @@ const compactProjectTemplate = project => {
   const mediaStyle = previewVars(project.preview);
   return `
     <article class="project-card reveal">
-      <a class="project-card__media ${project.preview.fit === 'contain' ? 'project-card__media--contain' : ''}" ${mediaStyle ? `style="${mediaStyle}"` : ''} href="${project.live || project.repository}" target="_blank" rel="noopener" data-cursor="ABRIR" aria-label="${project.live ? `Visitar ${project.title}` : `Ver repositório de ${project.title}`}">
+      <a class="project-card__media ${project.preview.fit === 'contain' ? 'project-card__media--contain' : ''} ${project.preview.color ? 'project-card__media--color' : ''}" ${mediaStyle ? `style="${mediaStyle}"` : ''} href="${project.live || project.repository}" target="_blank" rel="noopener" data-cursor="ABRIR" aria-label="${project.live ? `Visitar ${project.title}` : `Ver repositório de ${project.title}`}">
         <img src="${project.preview.poster}" alt="${project.preview.alt}" loading="lazy">
         <span>${project.number}</span>
         <b>↗</b>
@@ -216,6 +216,11 @@ if (finePointer) {
     });
   }
 }
+
+
+
+import { initChessKing } from './chess-king.js';
+initChessKing();
 
 $$('.copy-button').forEach(button => {
   button.addEventListener('click', async () => {

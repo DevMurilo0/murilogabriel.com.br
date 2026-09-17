@@ -12,11 +12,11 @@ export const projects = [
     repository: 'https://github.com/DevMurilo0/EntreTempos',
     live: 'https://www.entretempos.blog.br/',
     preview: {
-      kind: 'live',
-      poster: 'https://raw.githubusercontent.com/DevMurilo0/EntreTempos/main/entretempos.webp',
+      kind: 'image',
+      poster: '/assets/entretempos-preview.png',
       alt: 'Prévia do projeto Entre Tempos',
-      posterPosition: 'center 18%',
-      frameOffsetY: '-34%'
+      posterPosition: 'center top',
+      color: true
     }
   },
   {
@@ -73,7 +73,8 @@ export const projects = [
       kind: 'image',
       poster: '/assets/portalerempaf-preview.webp',
       alt: 'Elemento visual do Portal EREMPAF',
-      posterPosition: 'center top'
+      posterPosition: 'center top',
+      color: true
     }
   },
   {
