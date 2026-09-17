@@ -4,6 +4,7 @@ const $ = (selector, scope = document) => scope.querySelector(selector);
 const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const finePointer = matchMedia('(pointer:fine)').matches;
+const mobilePreviewMode = matchMedia('(max-width: 900px)').matches;
 
 const icons = {
   whatsapp: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .4 5.2.4 11.7c0 2.1.5 4.1 1.6 5.9L.3 24l6.6-1.7a11.7 11.7 0 0 0 5.2 1.2h.1c6.5 0 11.8-5.2 11.8-11.7 0-3.1-1.2-6-3.5-8.3Zm-8.4 18a9.7 9.7 0 0 1-4.9-1.3l-.4-.2-3.9 1 1-3.8-.3-.4A9.7 9.7 0 1 1 12.1 21.5Zm5.3-7.3c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-1.7-.8-2.9-1.5-4-3.4-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.6l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.2 3.3 1.4 3.6c.2.2 2.4 3.7 5.9 5.2 2.2.9 3 .9 4 .7.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.1-1.4-.1-.2-.4-.3-.7-.4Z"/></svg>',
@@ -40,7 +41,7 @@ const previewTemplate = project => {
   const mediaStyle = previewVars(project.preview);
   const poster = `<img class="project-poster ${project.preview.color ? 'project-poster--color' : ''}" src="${project.preview.poster}" alt="${project.preview.alt}" loading="lazy">`;
   const livePreview = project.preview.kind === 'live' && project.live
-    ? `<iframe class="project-frame" src="${project.live}" title="Prévia de ${project.title}" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>`
+    ? `<iframe class="project-frame${mobilePreviewMode ? ' project-frame--deferred' : ''}" ${mobilePreviewMode ? `data-live-src="${project.live}"` : `src="${project.live}"`} title="Prévia de ${project.title}" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>`
     : '';
 
   return `
@@ -99,6 +100,28 @@ const moreProjects = projects.filter(project => !project.featured);
 $('[data-projects-featured]').innerHTML = featuredProjects.map(projectTemplate).join('');
 $('[data-projects-more]').innerHTML = moreProjects.map(compactProjectTemplate).join('');
 $('[data-project-count]').textContent = String(projects.length).padStart(2, '0');
+
+
+if (mobilePreviewMode && 'IntersectionObserver' in window) {
+  const livePreviewObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const frame = entry.target;
+      const src = frame.dataset.liveSrc;
+      if (!src || frame.dataset.liveStarted) return;
+      frame.dataset.liveStarted = 'true';
+      frame.addEventListener('load', () => frame.classList.add('is-loaded'), { once: true });
+      frame.src = src;
+      observer.unobserve(frame);
+    });
+  }, {
+    root: null,
+    threshold: 0.32,
+    rootMargin: '0px 0px -8% 0px'
+  });
+
+  $$('.project-frame--deferred').forEach(frame => livePreviewObserver.observe(frame));
+}
 
 $('[data-stack]').innerHTML = stack.map((group, index) => `
   <div class="stack-group reveal">
