@@ -55,9 +55,9 @@ const previewTemplate = project => {
 };
 
 const projectTemplate = (project, index) => `
-    <article class="project project--${index % 2 ? 'reverse' : 'forward'} reveal" id="${project.slug}">
-      <div class="project-heading">
-      <div class="project-meta"><span>${String(index + 1).padStart(2, '0')}</span><span>${project.type}</span><span>${project.year}</span></div>
+  <article class="project project--${index % 2 ? 'reverse' : 'forward'} reveal" id="${project.slug}">
+    <div class="project-heading">
+      <div class="project-meta"><span>${project.number}</span><span>${project.type}</span><span>${project.year}</span></div>
       <h3>${project.title}</h3>
     </div>
     ${previewTemplate(project)}
@@ -94,10 +94,7 @@ const compactProjectTemplate = project => {
     </article>`;
 };
 
-const featuredOrder = ['taiane-almeida', 'entre-tempos', 'devarity-web'];
-const featuredProjects = projects
-  .filter(project => project.featured)
-  .sort((a, b) => featuredOrder.indexOf(a.slug) - featuredOrder.indexOf(b.slug));
+const featuredProjects = projects.filter(project => project.featured);
 const moreProjects = projects.filter(project => !project.featured);
 
 $('[data-projects-featured]').innerHTML = featuredProjects.map(projectTemplate).join('');

@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.murilogabriel.com.br/</loc>
-    <lastmod>2026-09-15</lastmod>
+    <lastmod>2026-09-18</lastmod>
+    <image:image>
+      <image:loc>https://www.murilogabriel.com.br/assets/murilo-profile-1x1.jpg</image:loc>
+      <image:title>Murilo Gabriel Souza da Silva</image:title>
+      <image:caption>Murilo Gabriel Souza da Silva, programador e desenvolvedor web.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.murilogabriel.com.br/assets/og-cover.png</image:loc>
+      <image:title>Portfólio de Murilo Gabriel</image:title>
+      <image:caption>Hero do portfólio de Murilo Gabriel Souza da Silva.</image:caption>
+    </image:image>
   </url>
 </urlset>
