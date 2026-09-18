@@ -36,3 +36,8 @@ Modelagem autoral do rei em `scripts/chess-king.js`, baseada no modelo atual do 
 Nesta variação, o canvas foi ampliado para 440×440 px, a escala do rei foi elevada para
 aproximadamente 1.52–1.62 e a rotação passou a acontecer de forma claramente perceptível
 nos eixos X e Y conforme o progresso do scroll.
+
+
+## SEO / GEO
+
+O projeto inclui dados estruturados de identidade/projetos, `profile.json`, `llms.txt` e `llms-full.txt`. Veja `SEO-NOME-GOOGLE.md` e `GEO.md` para o checklist de publicação e reindexação.

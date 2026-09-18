@@ -1,0 +1,56 @@
+# Murilo Gabriel Souza da Silva — perfil completo
+
+## Resumo
+Murilo Gabriel Souza da Silva é programador e desenvolvedor web. Seu portfólio reúne projetos de sites, interfaces responsivas, experiências digitais, animações e sistemas web. O foco do trabalho é combinar funcionamento, experiência de uso e identidade visual.
+
+## Identificadores públicos
+- Nome: Murilo Gabriel Souza da Silva
+- Nome usado publicamente: Murilo Gabriel
+- GitHub: DevMurilo0 — https://github.com/DevMurilo0/
+- Instagram: @murilo_gabriell0 — https://www.instagram.com/murilo_gabriell0/
+- Site oficial: https://www.murilogabriel.com.br/
+
+## Stack pública no portfólio
+- Front-end: HTML, CSS, JavaScript
+- Interface: responsividade, animação, WebGL
+- Banco/back-end: Supabase, Firebase
+- Ferramentas: Git, GitHub
+
+## Projetos
+### Entre Tempos
+Revista eletrônica interativa voltada a cultura, arte e conteúdo autoral.
+- Site: https://www.entretempos.blog.br/
+- Código: https://github.com/DevMurilo0/EntreTempos
+
+### Devarity Web
+Site institucional de estúdio web com direção visual, movimento, cases e interações em WebGL.
+- Site: https://devarity-web.devarity-web.workers.dev/
+- Código: https://github.com/mendeszk25/devarity-web
+
+### Taiane Almeida
+Experiência editorial criada para apresentar um livro e sua autora.
+- Site: https://taianealmeida.com.br/
+- Código: https://github.com/DevMurilo0/taianealmeida
+
+### Portal EREMPAF
+Portal digital escolar para concentrar informações e acessos da comunidade escolar.
+- Site: https://portalerempaf.vercel.app/
+- Código: https://github.com/DevMurilo0/portal_erempaf
+
+### ENEM Planner
+Ferramenta web de organização da rotina de estudos e preparação para o ENEM.
+- Site: https://enemplanner.vercel.app/
+- Código: https://github.com/DevMurilo0/enemplanner
+
+## Serviços apresentados no portfólio
+- Sites institucionais
+- Landing pages
+- Portfólios
+- Sistemas web
+
+## Contato
+- E-mail: murilogabriel.souza0@gmail.com
+- Página de contato: https://www.murilogabriel.com.br/#contato
+
+## Observação de atualização
+Este arquivo resume conteúdo público do próprio portfólio. Para a versão mais atual, consulte https://www.murilogabriel.com.br/.

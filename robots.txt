@@ -1,3 +1,4 @@
+# Conteúdo público disponível para mecanismos de busca e sistemas de resposta que respeitam robots.txt.
 User-agent: *
 Allow: /
 
