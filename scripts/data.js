@@ -91,9 +91,10 @@ export const projects = [
     live: 'https://enemplanner.vercel.app/',
     preview: {
       kind: 'image',
-      poster: 'https://raw.githubusercontent.com/DevMurilo0/enemplanner/main/icon.png',
-      alt: 'Elemento visual do ENEM Planner',
-      fit: 'contain'
+      poster: '/assets/enemplanner-preview.webp',
+      alt: 'Prévia do novo visual do ENEM Planner',
+      posterPosition: 'center top',
+      color: true
     }
   }
 ];
