@@ -23,7 +23,6 @@ HTML, CSS, JavaScript, React, TypeScript, Supabase, Firebase, Cloudflare, WebGL,
 - Escola Peralta — https://escola-peralta.escolaperalta.workers.dev/
 - Portal EREMPAF — https://portalerempaf.vercel.app/
 - ENEM Planner — https://enemplanner.vercel.app/
-- Fly Telecom — https://fly-telecom-fibra.vercel.app/
 
 ## Contato
 - E-mail: murilogabriel.souza0@gmail.com
