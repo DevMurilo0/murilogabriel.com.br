@@ -25,10 +25,10 @@ Os **6 projetos** da seção Trabalhos ficam cadastrados exclusivamente no array
 | Devarity Web | Imagem da Devarity e prévia incorporada | https://devarity.com.br/ |
 | Taiane Almeida | Imagem do site e prévia incorporada | https://taianealmeida.com.br/ |
 | Escola Peralta | Captura real do hero (arquivo local) | https://escola-peralta.escolaperalta.workers.dev/ |
-| Portal EREMPAF | Captura publicada pela Devarity | https://portalerempaf.vercel.app/ |
+| Portal EREMPAF | Captura local atualizada com a foto da Feira das Profissões (`assets/portalerempaf-hero-atualizado.jpg`) | https://portalerempaf.vercel.app/ |
 | ENEM Planner | Captura publicada pela Devarity | https://enemplanner.vercel.app/ |
 
-As prévias atuais do **Portal EREMPAF** e do **ENEM Planner** são imagens hospedadas em `https://devarity.com.br/assets/projects/` que representam as interfaces publicadas. Por segurança visual, ambas possuem `fallbackPoster` com as imagens locais anteriores; se a imagem remota não carregar, o navegador tenta a alternativa local.
+A prévia do **Portal EREMPAF** foi capturada da página publicada com a fotografia do destaque carregada e salva localmente em `assets/portalerempaf-hero-atualizado.jpg`. A prévia do **ENEM Planner** permanece hospedada na Devarity com fallback local. O Portal EREMPAF também mantém uma imagem local antiga como fallback.
 
 Para atualizar uma prévia no futuro, altere `poster`, `alt` e, se necessário, `posterPosition` do projeto correspondente. Prefira hospedar uma captura otimizada localmente em `assets/` para eliminar a dependência externa. Se adicionar ou remover projetos, atualize também a lista estruturada `ItemList` no `index.html`.
 
