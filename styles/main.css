@@ -77,7 +77,7 @@ img{display:block;max-width:100%}
 .section-head>p{justify-self:end;max-width:37ch;margin:0;color:#777;font-size:.75rem}
 .section-index{display:flex;gap:1.3rem;align-items:center;font-size:.57rem;letter-spacing:.14em;color:#777}.section-index span:first-child{color:var(--red);font-weight:700}
 .section-display{font:600 clamp(4.3rem,10vw,11rem)/.78 var(--display);letter-spacing:-.085em;margin:0;text-transform:uppercase}.section-display>span{color:var(--red)}
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}.reveal.is-visible{opacity:1;transform:none}
+.reveal{opacity:1;transform:none;transition:opacity .8s var(--ease),transform .8s var(--ease)}.reveal.is-pending{opacity:0;transform:translateY(26px)}.reveal.is-visible{opacity:1;transform:none}
 
 /* Projects */
 .projects{background:#080808;padding-top:clamp(7rem,11vw,11rem)}
