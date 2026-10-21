@@ -190,15 +190,22 @@ $$('.mobile-menu a').forEach(link => link.addEventListener('click', closeMenu));
 addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
 
 if ('IntersectionObserver' in window && !reducedMotion) {
+  // Só oculta para animação quando o JavaScript concluiu a renderização.
+  // Se um script falhar antes daqui, todo o conteúdo continua visível.
+  const revealTargets = $('.reveal');
   const observer = new IntersectionObserver(entries => entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('is-visible');
+      entry.target.classList.remove('is-pending');
       observer.unobserve(entry.target);
     }
   }), { threshold: 0.12, rootMargin: '0px 0px -7% 0px' });
-  $$('.reveal').forEach(el => observer.observe(el));
+  revealTargets.forEach(el => {
+    el.classList.add('is-pending');
+    observer.observe(el);
+  });
 } else {
-  $$('.reveal').forEach(el => el.classList.add('is-visible'));
+  $('.reveal').forEach(el => el.classList.add('is-visible'));
 }
 
 const hero = $('[data-hero]');
