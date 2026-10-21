@@ -17,17 +17,16 @@ O retrato principal atualmente usado no hero é `assets/murilo-hero-portrait.web
 
 ## Projetos
 
-Os **7 projetos** da seção Trabalhos ficam cadastrados exclusivamente no array `projects` de `scripts/data.js`.
+Os **6 projetos** da seção Trabalhos ficam cadastrados exclusivamente no array `projects` de `scripts/data.js`.
 
 | Projeto | Prévia | Destino |
 | --- | --- | --- |
 | Entre Tempos | Arquivo local | https://www.entretempos.blog.br/ |
 | Devarity Web | Imagem da Devarity e prévia incorporada | https://devarity.com.br/ |
 | Taiane Almeida | Imagem do site e prévia incorporada | https://taianealmeida.com.br/ |
-| Escola Peralta | Fotografia institucional publicada | https://escola-peralta.escolaperalta.workers.dev/ |
+| Escola Peralta | Captura real do hero (arquivo local) | https://escola-peralta.escolaperalta.workers.dev/ |
 | Portal EREMPAF | Captura publicada pela Devarity | https://portalerempaf.vercel.app/ |
 | ENEM Planner | Captura publicada pela Devarity | https://enemplanner.vercel.app/ |
-| Fly Telecom | Captura publicada pela Devarity | https://fly-telecom-fibra.vercel.app/ |
 
 As prévias atuais do **Portal EREMPAF** e do **ENEM Planner** são imagens hospedadas em `https://devarity.com.br/assets/projects/` que representam as interfaces publicadas. Por segurança visual, ambas possuem `fallbackPoster` com as imagens locais anteriores; se a imagem remota não carregar, o navegador tenta a alternativa local.
 
