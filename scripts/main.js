@@ -39,7 +39,7 @@ const previewVars = preview => {
 const previewTemplate = project => {
   const destination = project.live || project.repository;
   const mediaStyle = previewVars(project.preview);
-  const poster = `<img class="project-poster ${project.preview.color ? 'project-poster--color' : ''}" src="${project.preview.poster}" alt="${project.preview.alt}" loading="lazy">`;
+  const poster = `<img class="project-poster ${project.preview.color ? 'project-poster--color' : ''}" src="${project.preview.poster}" ${project.preview.fallbackPoster ? `data-fallback-poster="${project.preview.fallbackPoster}"` : ''} alt="${project.preview.alt}" loading="lazy" decoding="async">`;
   const livePreview = project.preview.kind === 'live' && project.live
     ? `<iframe class="project-frame${mobilePreviewMode ? ' project-frame--deferred' : ''}" ${mobilePreviewMode ? `data-live-src="${project.live}"` : `src="${project.live}"`} title="Prévia de ${project.title}" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>`
     : '';
@@ -77,7 +77,7 @@ const compactProjectTemplate = project => {
   return `
     <article class="project-card reveal">
       <a class="project-card__media ${project.preview.fit === 'contain' ? 'project-card__media--contain' : ''} ${project.preview.color ? 'project-card__media--color' : ''}" ${mediaStyle ? `style="${mediaStyle}"` : ''} href="${project.live || project.repository}" target="_blank" rel="noopener" data-cursor="ABRIR" aria-label="${project.live ? `Visitar ${project.title}` : `Ver repositório de ${project.title}`}">
-        <img src="${project.preview.poster}" alt="${project.preview.alt}" loading="lazy">
+        <img src="${project.preview.poster}" ${project.preview.fallbackPoster ? `data-fallback-poster="${project.preview.fallbackPoster}"` : ''} alt="${project.preview.alt}" loading="lazy" decoding="async">
         <span>${project.number}</span>
         <b>↗</b>
       </a>
@@ -100,6 +100,17 @@ const moreProjects = projects.filter(project => !project.featured);
 $('[data-projects-featured]').innerHTML = featuredProjects.map(projectTemplate).join('');
 $('[data-projects-more]').innerHTML = moreProjects.map(compactProjectTemplate).join('');
 $('[data-project-count]').textContent = String(projects.length).padStart(2, '0');
+
+// As prévias recentes são hospedadas na Devarity; mantém as imagens locais
+// anteriores como recurso de contingência se houver falha de conexão externa.
+$('img[data-fallback-poster]').forEach(img => {
+  const useFallback = () => {
+    const fallback = img.dataset.fallbackPoster;
+    if (fallback && img.getAttribute('src') !== fallback) img.src = fallback;
+  };
+  img.addEventListener('error', useFallback, { once: true });
+  if (img.complete && !img.naturalWidth) useFallback();
+});
 
 
 if (mobilePreviewMode && 'IntersectionObserver' in window) {
