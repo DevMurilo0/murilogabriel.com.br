@@ -142,9 +142,9 @@ export const projects = [
 ];
 
 export const stack = [
-  { category: 'Front-end', items: ['HTML', 'CSS', 'JavaScript'] },
+  { category: 'Front-end', items: ['HTML', 'CSS', 'JavaScript', 'React', 'TypeScript'] },
   { category: 'Interface', items: ['Responsividade', 'Animação', 'WebGL'] },
-  { category: 'Banco / back-end', items: ['Supabase', 'Firebase'] },
+  { category: 'Banco / back-end', items: ['Supabase', 'Firebase', 'Cloudflare Workers'] },
   { category: 'Ferramentas', items: ['Git', 'GitHub'] }
 ];
 
