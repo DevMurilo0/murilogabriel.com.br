@@ -14,14 +14,16 @@
 Murilo Gabriel é programador e desenvolvedor web. Trabalha com sites, interfaces responsivas, animações, experiências digitais e sistemas web, combinando código, design e identidade visual.
 
 ## Tecnologias
-HTML, CSS, JavaScript, Supabase, Firebase, WebGL, Git e GitHub.
+HTML, CSS, JavaScript, React, TypeScript, Supabase, Firebase, Cloudflare, WebGL, Git e GitHub.
 
 ## Projetos públicos selecionados
 - Entre Tempos — https://www.entretempos.blog.br/
-- Devarity Web — https://devarity-web.devarity-web.workers.dev/
+- Devarity Web — https://devarity.com.br/
 - Taiane Almeida — https://taianealmeida.com.br/
+- Escola Peralta — https://escola-peralta.escolaperalta.workers.dev/
 - Portal EREMPAF — https://portalerempaf.vercel.app/
 - ENEM Planner — https://enemplanner.vercel.app/
+- Fly Telecom — https://fly-telecom-fibra.vercel.app/
 
 ## Contato
 - E-mail: murilogabriel.souza0@gmail.com
