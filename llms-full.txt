@@ -24,7 +24,7 @@ Revista eletrônica interativa voltada a cultura, arte e conteúdo autoral.
 
 ### Devarity Web
 Site institucional de estúdio web com direção visual, movimento, cases e interações em WebGL.
-- Site: https://devarity-web.devarity-web.workers.dev/
+- Site: https://devarity.com.br/
 - Código: https://github.com/mendeszk25/devarity-web
 
 ### Taiane Almeida
@@ -32,15 +32,25 @@ Experiência editorial criada para apresentar um livro e sua autora.
 - Site: https://taianealmeida.com.br/
 - Código: https://github.com/DevMurilo0/taianealmeida
 
+### Escola Peralta
+Site institucional e sistema escolar com autenticação, gestão de turmas, alunos, notas, frequência e recursos de administração.
+- Site: https://escola-peralta.escolaperalta.workers.dev/
+- Código: https://github.com/DevMurilo0/escola-peralta
+
 ### Portal EREMPAF
-Portal digital escolar para concentrar informações e acessos da comunidade escolar.
+Portal escolar por turma com calendário, matérias, avisos, fotos, notificações push e histórico de alterações.
 - Site: https://portalerempaf.vercel.app/
 - Código: https://github.com/DevMurilo0/portal_erempaf
 
 ### ENEM Planner
-Ferramenta web de organização da rotina de estudos e preparação para o ENEM.
+Planner que importa cronogramas de estudos, adapta conteúdos ao tempo disponível e acompanha progresso diário, semanal, mensal e anual.
 - Site: https://enemplanner.vercel.app/
 - Código: https://github.com/DevMurilo0/enemplanner
+
+### Fly Telecom
+Site comercial de internet fibra com comparador de planos, sugestão de perfil e consulta de cobertura via WhatsApp.
+- Site: https://fly-telecom-fibra.vercel.app/
+- Código: https://github.com/DevMurilo0/fly-telecom-fibra
 
 ## Serviços apresentados no portfólio
 - Sites institucionais
