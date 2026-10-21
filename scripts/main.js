@@ -14,6 +14,9 @@ const icons = {
 };
 
 const stackIcons = {
+  react: '<svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="12" rx="9" ry="3.5"/><ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(120 12 12)"/><circle cx="12" cy="12" r="1.5"/></svg>',
+  typescript: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 9h7M10.5 9v8M17.5 10.2c-.5-.5-1.1-.7-1.8-.7-.9 0-1.5.5-1.5 1.2 0 1.7 3.6 1.1 3.6 3.8 0 1.2-1 2-2.3 2-.9 0-1.8-.4-2.3-1"/></svg>',
+  'cloudflare workers': '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17h14a3.5 3.5 0 0 0 .4-7A7 7 0 0 0 6 9a4 4 0 0 0-1 8Z"/><path d="m13 6-3 7h4l-2 5"/></svg>',
   html: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h16l-1.5 17L12 22l-6.5-2L4 3Z"/><path d="M8 7h8M8.5 11H15M9 15h5"/></svg>',
   css: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h16l-1.5 17L12 22l-6.5-2L4 3Z"/><path d="M8 7h8M9 11h6M9.5 15H14"/></svg>',
   javascript: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M10 8v7.2c0 1.4-.8 2.3-2.2 2.3-.9 0-1.7-.3-2.3-.8M14.3 14.8c.5 1.1 1.4 1.8 2.8 1.8 1.2 0 2.1-.6 2.1-1.6 0-1.1-.8-1.5-2.3-2.1-1.4-.6-2.4-1.2-2.4-2.8 0-1.4 1.1-2.5 2.8-2.5 1.2 0 2.1.4 2.8 1.5"/></svg>',
