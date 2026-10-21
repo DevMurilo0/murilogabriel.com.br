@@ -106,7 +106,7 @@ $('[data-project-count]').textContent = String(projects.length).padStart(2, '0')
 
 // As prévias recentes são hospedadas na Devarity; mantém as imagens locais
 // anteriores como recurso de contingência se houver falha de conexão externa.
-$('img[data-fallback-poster]').forEach(img => {
+$$('img[data-fallback-poster]').forEach(img => {
   const useFallback = () => {
     const fallback = img.dataset.fallbackPoster;
     if (fallback && img.getAttribute('src') !== fallback) img.src = fallback;
