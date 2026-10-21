@@ -71,9 +71,10 @@ export const projects = [
     live: 'https://escola-peralta.escolaperalta.workers.dev/',
     preview: {
       kind: 'image',
-      poster: 'https://escola-peralta.escolaperalta.workers.dev/images/school/hero-escola.webp',
-      alt: 'Fotografia da Escola Peralta utilizada na página institucional do projeto',
-      posterPosition: 'center 42%',
+      poster: '/assets/escola-peralta-hero.jpg',
+      fallbackPoster: 'https://escola-peralta.escolaperalta.workers.dev/images/school/hero-escola.webp',
+      alt: 'Captura do hero da Escola Peralta, com título, navegação e fotografia institucional',
+      posterPosition: 'center top',
       color: true
     }
   },
@@ -115,26 +116,6 @@ export const projects = [
       poster: 'https://devarity.com.br/assets/projects/enem-planner.webp',
       fallbackPoster: '/assets/enemplanner-preview.webp',
       alt: 'Captura atual do Planner ENEM com calendário semanal e acompanhamento dos estudos',
-      posterPosition: 'center top',
-      color: true
-    }
-  },
-  {
-    number: '07',
-    slug: 'fly-telecom',
-    title: 'Fly Telecom',
-    type: 'Site comercial / conectividade',
-    year: '2026',
-    featured: false,
-    description: 'Site para provedora de fibra óptica com apresentação de planos, comparador, recomendação por perfil e consulta de cobertura via WhatsApp.',
-    objective: 'Facilitar a escolha de planos e o contato comercial, com uma experiência responsiva e identidade visual própria.',
-    technologies: ['HTML', 'CSS', 'JavaScript'],
-    repository: 'https://github.com/DevMurilo0/fly-telecom-fibra',
-    live: 'https://fly-telecom-fibra.vercel.app/',
-    preview: {
-      kind: 'image',
-      poster: 'https://devarity.com.br/assets/projects/fly-telecom.webp',
-      alt: 'Captura atual da página inicial da Fly Telecom',
       posterPosition: 'center top',
       color: true
     }
