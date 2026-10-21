@@ -92,9 +92,9 @@ export const projects = [
     live: 'https://portalerempaf.vercel.app/',
     preview: {
       kind: 'image',
-      poster: 'https://devarity.com.br/assets/projects/portal-erempaf.webp',
+      poster: '/assets/portalerempaf-hero-atualizado.jpg',
       fallbackPoster: '/assets/portalerempaf-preview.webp',
-      alt: 'Captura da página institucional atual do Portal EREMPAF com acesso às turmas',
+      alt: 'Página inicial atual do Portal EREMPAF com foto da Feira das Profissões, navegação e acessos rápidos',
       posterPosition: 'center top',
       color: true
     }
