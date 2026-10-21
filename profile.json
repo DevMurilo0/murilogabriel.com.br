@@ -13,7 +13,7 @@
     "Programador",
     "Desenvolvedor Web"
   ],
-  "description": "Programador e desenvolvedor web com foco em sites, interfaces responsivas, animações e experiências digitais.",
+  "description": "Desenvolvedor web e de sistemas, com projetos de sites, interfaces responsivas, ferramentas educacionais e experiências digitais.",
   "image": [
     "https://www.murilogabriel.com.br/assets/murilo-profile-1x1.jpg",
     "https://www.murilogabriel.com.br/assets/murilo-profile-4x3.jpg",
@@ -33,7 +33,11 @@
     "Firebase",
     "WebGL",
     "Git",
-    "GitHub"
+    "GitHub",
+    "React",
+    "TypeScript",
+    "Cloudflare Workers",
+    "Sistemas escolares"
   ],
   "subjectOf": [
     {
