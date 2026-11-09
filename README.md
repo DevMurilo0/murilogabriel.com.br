@@ -17,18 +17,19 @@ O retrato principal atualmente usado no hero é `assets/murilo-hero-portrait.web
 
 ## Projetos
 
-Os **6 projetos** da seção Trabalhos ficam cadastrados exclusivamente no array `projects` de `scripts/data.js`.
+Os **7 projetos** da seção Trabalhos ficam cadastrados exclusivamente no array `projects` de `scripts/data.js`.
 
 | Projeto | Prévia | Destino |
 | --- | --- | --- |
 | Entre Tempos | Arquivo local | https://www.entretempos.blog.br/ |
 | Devarity Web | Imagem da Devarity e prévia incorporada | https://devarity.com.br/ |
 | Taiane Almeida | Imagem do site e prévia incorporada | https://taianealmeida.com.br/ |
-| Escola Peralta | Captura real do hero (arquivo local) | https://escola-peralta.escolaperalta.workers.dev/ |
-| Portal EREMPAF | Captura local atualizada com a foto da Feira das Profissões (`assets/portalerempaf-hero-atualizado.jpg`) | https://portalerempaf.vercel.app/ |
+| Portal EREMPAF | Captura atual (`assets/portal-erempaf-2026.jpg`) | https://portalerempaf.vercel.app/ |
+| ELO INSTITUCIONAL | Captura atual (`assets/elo-institucional-2026.jpg`) | https://elo-ufrb.eloprototipo.workers.dev/ |
+| Escola Peralta | Captura atual (`assets/escola-peralta-2026.jpg`) | https://escola-peralta.escolaperalta.workers.dev/ |
 | ENEM Planner | Captura publicada pela Devarity | https://enemplanner.vercel.app/ |
 
-A prévia do **Portal EREMPAF** foi capturada da página publicada com a fotografia do destaque carregada e salva localmente em `assets/portalerempaf-hero-atualizado.jpg`. A prévia do **ENEM Planner** permanece hospedada na Devarity com fallback local. O Portal EREMPAF também mantém uma imagem local antiga como fallback.
+As prévias de **Portal EREMPAF**, **ELO INSTITUCIONAL** e **Escola Peralta** são capturas reais das páginas publicadas em novembro de 2026, armazenadas localmente em `assets/` para evitar links de imagens temporários. O Portal EREMPAF e a Escola Peralta também mantêm os arquivos de prévia anteriores como fallback. A prévia do **ENEM Planner** permanece hospedada na Devarity com fallback local.
 
 Para atualizar uma prévia no futuro, altere `poster`, `alt` e, se necessário, `posterPosition` do projeto correspondente. Prefira hospedar uma captura otimizada localmente em `assets/` para eliminar a dependência externa. Se adicionar ou remover projetos, atualize também a lista estruturada `ItemList` no `index.html`.
 

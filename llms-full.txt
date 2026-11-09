@@ -32,15 +32,20 @@ Experiência editorial criada para apresentar um livro e sua autora.
 - Site: https://taianealmeida.com.br/
 - Código: https://github.com/DevMurilo0/taianealmeida
 
-### Escola Peralta
-Site institucional e sistema escolar com autenticação, gestão de turmas, alunos, notas, frequência e recursos de administração.
-- Site: https://escola-peralta.escolaperalta.workers.dev/
-- Código: https://github.com/DevMurilo0/escola-peralta
-
 ### Portal EREMPAF
 Portal escolar por turma com calendário, matérias, avisos, fotos, notificações push e histórico de alterações.
 - Site: https://portalerempaf.vercel.app/
 - Código: https://github.com/DevMurilo0/portal_erempaf
+
+### ELO INSTITUCIONAL
+Site institucional do projeto de extensão ELO, reunindo ações, agendas, publicações e conteúdos que aproximam universidade e comunidade.
+- Site: https://elo-ufrb.eloprototipo.workers.dev/
+- Código: https://github.com/DevMurilo0/ELO.UFRB
+
+### Escola Peralta
+Site institucional e sistema escolar com autenticação, gestão de turmas, alunos, notas, frequência e recursos de administração.
+- Site: https://escola-peralta.escolaperalta.workers.dev/
+- Código: https://github.com/DevMurilo0/escola-peralta
 
 ### ENEM Planner
 Planner que importa cronogramas de estudos, adapta conteúdos ao tempo disponível e acompanha progresso diário, semanal, mensal e anual.
