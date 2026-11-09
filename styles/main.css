@@ -128,7 +128,8 @@ img{display:block;max-width:100%}
 
 
 /* Scroll-driven 3D chess king */
-.chess-3d-canvas{position:fixed;left:0;top:0;width:440px;height:440px;z-index:2;pointer-events:none;visibility:hidden;will-change:transform}
+.chess-3d-canvas,.chess-3d-fallback{position:fixed;left:0;top:0;width:440px;height:440px;z-index:15;pointer-events:none;visibility:hidden;will-change:transform}
+.chess-3d-fallback{object-fit:contain;filter:drop-shadow(12px 26px 20px rgba(0,0,0,.3));transform-origin:center center}
 .about,.stack{position:relative;isolation:auto}
 .about .section-head,.about-title-wrap,.about-copy,.stack .section-head,.stack-groups{position:relative;z-index:3}
 .about-photo,.stack-grid>.section-display{position:relative;z-index:4}
@@ -147,7 +148,7 @@ img{display:block;max-width:100%}
 }
 
 @media(max-width:900px){
-  .chess-3d-canvas{display:block;width:300px;height:300px}
+  .chess-3d-canvas,.chess-3d-fallback{display:block;width:300px;height:300px}
   :root{--container:min(89vw,760px)}
   .site-header{height:70px;padding:0 5.5vw}.desktop-nav{display:none}.menu-toggle{display:block}.menu-open{overflow:hidden}.menu-open .menu-toggle span:first-child{top:18px;transform:rotate(45deg)}.menu-open .menu-toggle span:last-child{top:18px;transform:rotate(-45deg)}
   .hero-shell{padding-top:96px;grid-template-rows:auto 1fr auto auto}.hero-gridlines{background-size:20vw 100%,100% 8rem}.hero-gridlines:after{left:80%}

@@ -70,222 +70,254 @@ export function buildChessKing(THREE) {
 
 export function initChessKing() {
   const canvas = document.querySelector('[data-chess-3d]');
+  const fallback = document.querySelector('[data-chess-3d-fallback]');
   const about = document.querySelector('#sobre');
   const photo = document.querySelector('.about-photo');
   const title = document.querySelector('#stack-title');
   const stackSection = document.querySelector('#stack');
-  if (!canvas || !about || !photo || !title || !stackSection) return;
-  const eligible = matchMedia('(prefers-reduced-motion: no-preference)');
-  let dispose = null;
+  if (!canvas || !fallback || !about || !photo || !title || !stackSection) return;
+
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+  const mix = (a, b, t) => a + (b - a) * t;
+  const smooth = t => t * t * (3 - 2 * t);
+  const near = (a, b, tolerance = .2) => Math.abs(a - b) <= tolerance;
+  let renderer = null;
+  let scene = null;
+  let king = null;
+  let camera = null;
+  let keyLight = null;
+  let canvasSize = 440;
+  let frame = 0;
+  let previous = 0;
+  let current = scrollY;
+  let displayX = innerWidth + 120;
+  let displayY = innerHeight * .7;
+  let displayRotX = -.38;
+  let displayRotY = -.55;
+  let displayRotZ = 0;
+  let displayScale = 1.62;
   let generation = 0;
+
+  function size() {
+    const next = innerWidth <= 900 ? Math.min(300, innerWidth * .78) : 440;
+    if (Math.abs(next - canvasSize) < .5) return;
+    canvasSize = next;
+    fallback.style.width = next + 'px';
+    fallback.style.height = next + 'px';
+    if (renderer) renderer.setSize(next, next, false);
+  }
+
+  function show(active) {
+    canvas.style.visibility = active && renderer ? 'visible' : 'hidden';
+    fallback.style.visibility = active && !renderer ? 'visible' : 'hidden';
+  }
+
+  function draw(now) {
+    frame = 0;
+    if (document.hidden) return;
+    const dt = Math.min((now - (previous || now - 16)) / 1000, .05);
+    previous = now;
+    current = mix(current, scrollY, 1 - Math.exp(-11 * dt));
+    if (near(current, scrollY, .1)) current = scrollY;
+
+    const pr = photo.getBoundingClientRect();
+    const tr = title.getBoundingClientRect();
+    const h = innerHeight;
+    const start = about.offsetTop - h;
+    const photoY = pr.top + scrollY + pr.height * .44;
+    const meet = photoY - h * .48;
+    const stackMeet = tr.top + scrollY + tr.height * .52 - h * .56;
+    const mobile = innerWidth <= 900;
+    const stackBottom = stackSection.offsetTop + stackSection.offsetHeight;
+    const end = mobile ? stackBottom - h * .16 : stackMeet + h * .65;
+    const path = mobile ? [
+      [start, -canvasSize * .42, start + h * .58],
+      [meet + h * .18, innerWidth * .10, meet + h * .74],
+      [stackSection.offsetTop - h * .42, innerWidth * .76, stackSection.offsetTop + h * .18],
+      [stackSection.offsetTop + stackSection.offsetHeight * .38 - h * .52, innerWidth * .79, stackSection.offsetTop + stackSection.offsetHeight * .38 + h * .14],
+      [stackBottom - h * .72, innerWidth * .82, stackBottom],
+      [end, innerWidth + canvasSize * .42, end + h * .72]
+    ] : [
+      [start, innerWidth + 100, start + h * .70],
+      [mix(start, meet, .62), pr.right + 90, photoY - 65],
+      [meet, pr.left + pr.width * .52, photoY],
+      [meet + h * .25, pr.left - 65, photoY + 100],
+      [stackMeet - h * .22, tr.left - 55, stackMeet + h * .56 - 35],
+      [stackMeet, tr.left + tr.width * .42, stackMeet + h * .56],
+      [end, innerWidth + 110, end + h * .50]
+    ];
+
+    // No movement in reduced-motion mode; the fallback stays anchored to the portrait.
+    if (reducedMotion.matches) {
+      const visible = pr.bottom > h * .1 && pr.top < h * .9;
+      show(visible);
+      if (visible) fallback.style.transform =
+        'translate3d(' + (pr.left + pr.width * .55 - canvasSize / 2) + 'px,' +
+        (pr.top + pr.height * .4 - canvasSize / 2) + 'px,0)';
+      return;
+    }
+
+    const active = current >= start && current <= end;
+    show(active);
+    if (!active) return;
+
+    let i = 0;
+    while (i < path.length - 2 && current > path[i + 1][0]) i++;
+    const a = path[i], b = path[i + 1];
+    const progress = smooth(clamp((current - a[0]) / Math.max(1, b[0] - a[0]), 0, 1));
+    const targetX = mix(a[1], b[1], progress);
+    const targetY = mix(a[2], b[2], progress) - scrollY;
+    const overall = clamp((current - start) / Math.max(1, end - start), 0, 1);
+    const targetScale = (mobile ? 1.34 : 1.62) - .10 * Math.sin(overall * Math.PI);
+    const targetRotX = -.38 + overall * Math.PI * 3.5;
+    const targetRotY = -.55 + overall * Math.PI * 2.5;
+    const targetRotZ = Math.sin(overall * Math.PI * 2) * .045;
+    const posEase = 1 - Math.exp(-8.5 * dt);
+    const rotEase = 1 - Math.exp(-6.5 * dt);
+    displayX = mix(displayX, targetX, posEase);
+    displayY = mix(displayY, targetY, posEase);
+    displayRotX = mix(displayRotX, targetRotX, rotEase);
+    displayRotY = mix(displayRotY, targetRotY, rotEase);
+    displayRotZ = mix(displayRotZ, targetRotZ, rotEase);
+    displayScale = mix(displayScale, targetScale, rotEase);
+
+    const transform = 'translate3d(' + (displayX - canvasSize / 2) + 'px,' +
+      (displayY - canvasSize / 2) + 'px,0)';
+    if (renderer && scene && king) {
+      canvas.style.transform = transform;
+      king.scale.setScalar(displayScale);
+      king.rotation.set(displayRotX, displayRotY, displayRotZ);
+      renderer.render(scene, camera);
+    } else {
+      // Same scroll choreography, with a shaded SVG if WebGL is blocked or unsupported.
+      fallback.style.transform = transform + ' rotate(' + (displayRotZ * 180 / Math.PI) + 'deg)';
+    }
+
+    const settled =
+      near(current, scrollY, .15) &&
+      near(displayX, targetX, .3) &&
+      near(displayY, targetY, .3) &&
+      near(displayRotX, targetRotX, .003) &&
+      near(displayRotY, targetRotY, .003) &&
+      near(displayRotZ, targetRotZ, .002) &&
+      near(displayScale, targetScale, .002);
+    if (!settled) frame = requestAnimationFrame(draw);
+  }
+
+  function schedule() {
+    size();
+    if (!frame && !document.hidden) frame = requestAnimationFrame(draw);
+  }
+
+  function onVisibility() {
+    if (document.hidden) { cancelAnimationFrame(frame); frame = 0; }
+    else { current = scrollY; previous = 0; schedule(); }
+  }
+
+  function disposeRenderer() {
+    if (renderer) {
+      const materials = new Set();
+      scene.traverse(object => {
+        object.geometry?.dispose();
+        if (object.material) {
+          for (const material of Array.isArray(object.material) ? object.material : [object.material])
+            materials.add(material);
+        }
+      });
+      materials.forEach(material => material.dispose());
+      keyLight?.shadow?.dispose();
+      renderer.dispose();
+    }
+    renderer = null;
+    scene = null;
+    king = null;
+    camera = null;
+    keyLight = null;
+    show(false);
+  }
 
   async function activate() {
     const ticket = ++generation;
-    dispose?.();
-    dispose = null;
-    canvas.style.visibility = 'hidden';
-    if (!eligible.matches) return;
+    disposeRenderer();
+    if (reducedMotion.matches) {
+      schedule();
+      return;
+    }
     try {
+      // Three.js 0.180 requires WebGL2. An unavailable GPU must not remove the piece.
+      const preflight = document.createElement('canvas');
+      const gl = preflight.getContext('webgl2');
+      if (!gl) throw new Error('WebGL2 indisponível');
+      gl.getExtension('WEBGL_lose_context')?.loseContext();
+
       const THREE = await import('https://esm.sh/three@0.180.0');
       if (ticket !== generation) return;
-      const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true, powerPreference:'low-power'});
-      renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
-      let canvasSize = innerWidth <= 900 ? Math.min(300, innerWidth * .78) : 440;
-      renderer.setSize(canvasSize, canvasSize, false);
-      renderer.setClearColor(0, 0);
-      renderer.outputColorSpace = THREE.SRGBColorSpace;
-      renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      renderer.toneMappingExposure = 1.2;
-      renderer.shadowMap.enabled = true;
-      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-      const scene = new THREE.Scene();
-      const camera = new THREE.OrthographicCamera(-2.25,2.25,2.25,-2.25,.1,30);
-      camera.position.set(0,0,10);
-      const king = buildChessKing(THREE);
-      scene.add(king);
-      scene.add(new THREE.HemisphereLight(0xe4ebf5,0x39332e,.65));
-      const key = new THREE.DirectionalLight(0xffffff,3.6);
-      key.position.set(-3,7,6);
-      key.castShadow = true;
-      key.shadow.mapSize.set(1024,1024);
-      Object.assign(key.shadow.camera,{left:-2.5,right:2.5,top:2.5,bottom:-2.5,near:.1,far:20});
-      key.shadow.bias = -.0003;
-      key.shadow.normalBias = .015;
-      key.shadow.radius = 3;
-      const fill = new THREE.DirectionalLight(0xe0e9ff,.85);
-      fill.position.set(4,1.5,3);
-      const rim = new THREE.DirectionalLight(0xffffff,2.8);
-      rim.position.set(2,3,-4);
-      scene.add(key,fill,rim);
-      const ground = new THREE.Mesh(new THREE.PlaneGeometry(8,8),new THREE.ShadowMaterial({opacity:.14}));
+      const nextRenderer = new THREE.WebGLRenderer({
+        canvas, alpha: true, antialias: true, powerPreference: 'low-power'
+      });
+      nextRenderer.setPixelRatio(Math.min(devicePixelRatio || 1, 1.5));
+      nextRenderer.setSize(canvasSize, canvasSize, false);
+      nextRenderer.setClearColor(0, 0);
+      nextRenderer.outputColorSpace = THREE.SRGBColorSpace;
+      nextRenderer.toneMapping = THREE.ACESFilmicToneMapping;
+      nextRenderer.toneMappingExposure = 1.2;
+      nextRenderer.shadowMap.enabled = true;
+      nextRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+      const nextScene = new THREE.Scene();
+      const nextCamera = new THREE.OrthographicCamera(-2.25, 2.25, 2.25, -2.25, .1, 30);
+      nextCamera.position.set(0, 0, 10);
+      const nextKing = buildChessKing(THREE);
+      nextScene.add(nextKing, new THREE.HemisphereLight(0xe4ebf5, 0x39332e, .65));
+      const nextKey = new THREE.DirectionalLight(0xffffff, 3.6);
+      nextKey.position.set(-3, 7, 6);
+      nextKey.castShadow = true;
+      nextKey.shadow.mapSize.set(1024, 1024);
+      Object.assign(nextKey.shadow.camera, {left:-2.5,right:2.5,top:2.5,bottom:-2.5,near:.1,far:20});
+      nextKey.shadow.bias = -.0003;
+      nextKey.shadow.normalBias = .015;
+      nextKey.shadow.radius = 3;
+      const fill = new THREE.DirectionalLight(0xe0e9ff, .85);
+      fill.position.set(4, 1.5, 3);
+      const rim = new THREE.DirectionalLight(0xffffff, 2.8);
+      rim.position.set(2, 3, -4);
+      nextScene.add(nextKey, fill, rim);
+      const ground = new THREE.Mesh(
+        new THREE.PlaneGeometry(8, 8),
+        new THREE.ShadowMaterial({opacity: .14})
+      );
       ground.rotation.x = -Math.PI / 2.7;
-      ground.position.set(0,-1.28,-.15);
+      ground.position.set(0, -1.28, -.15);
       ground.receiveShadow = true;
-      scene.add(ground);
-
-      let frame = 0;
-      let previous = 0;
-      let current = scrollY;
-      let displayX = innerWidth + 100;
-      let displayY = innerHeight * .7;
-      let displayProgress = 0;
-      let displayRotX = -.38;
-      let displayRotY = -.55;
-      let displayRotZ = 0;
-      let displayScale = 1.62;
-      const clamp = THREE.MathUtils.clamp;
-      const mix = THREE.MathUtils.lerp;
-      const smooth = t => t*t*(3-2*t);
-      const almostEqual = (a, b, epsilon = .1) => Math.abs(a - b) <= epsilon;
-
-      function render(now) {
-        frame = 0;
-        if (document.hidden) return;
-        const dt = Math.min((now - (previous || now - 16)) / 1000, .05);
-        previous = now;
-
-        // Softer scroll catch-up for a more fluid feeling.
-        current = mix(current, scrollY, 1 - Math.exp(-11 * dt));
-        if (Math.abs(current - scrollY) < .1) current = scrollY;
-
-        const pr = photo.getBoundingClientRect();
-        const tr = title.getBoundingClientRect();
-        const h = innerHeight;
-        const start = about.offsetTop - h;
-        const photoY = pr.top + scrollY + pr.height * .44;
-        const meet = photoY - h * .48;
-        const stackMeet = tr.top + scrollY + tr.height * .52 - h * .56;
-        const mobile = innerWidth <= 900;
-        const stackBottom = stackSection.offsetTop + stackSection.offsetHeight;
-        const mobileEnd = stackBottom - h * .16;
-        const end = mobile ? mobileEnd : stackMeet + h * .65;
-
-        const mobileStage1 = start;
-        const mobileStage2 = meet + h * .18;
-        const mobileStage3 = stackSection.offsetTop - h * .42;
-        const mobileStage4 = stackSection.offsetTop + stackSection.offsetHeight * .38 - h * .52;
-        const mobileStage5 = stackBottom - h * .72;
-
-        const path = mobile ? [
-          // Mobile only: enter from the LEFT through Sobre. Once Stack begins,
-          // move to the RIGHT side and stay there while rotating, then exit right.
-          [mobileStage1, -canvasSize * .42, mobileStage1 + h * .58],
-          [mobileStage2, innerWidth * .10, mobileStage2 + h * .56],
-          [mobileStage3, innerWidth * .76, mobileStage3 + h * .60],
-          [mobileStage4, innerWidth * .79, mobileStage4 + h * .66],
-          [mobileStage5, innerWidth * .82, mobileStage5 + h * .72],
-          [end, innerWidth + canvasSize * .42, end + h * .72]
-        ] : [
-          [start, innerWidth + 100, start + h * .70],
-          [mix(start, meet, .62), pr.right + 90, photoY - 65],
-          [meet, pr.left + pr.width * .52, photoY],
-          [meet + h * .25, pr.left - 65, photoY + 100],
-          [stackMeet - h * .22, tr.left - 55, stackMeet + h * .56 - 35],
-          [stackMeet, tr.left + tr.width * .42, stackMeet + h * .56],
-          [end, innerWidth + 110, end + h * .50]
-        ];
-
-        const active = current >= start && current <= end;
-        canvas.style.visibility = active ? 'visible' : 'hidden';
-
-        let targetX = displayX;
-        let targetY = displayY;
-        let targetProgress = displayProgress;
-        let targetRotX = displayRotX;
-        let targetRotY = displayRotY;
-        let targetRotZ = displayRotZ;
-        let targetScale = displayScale;
-
-        if (active) {
-          let i = 0;
-          while (i < path.length - 2 && current > path[i + 1][0]) i++;
-          const a = path[i], b = path[i + 1];
-          const t = smooth(clamp((current - a[0]) / (b[0] - a[0]), 0, 1));
-          targetX = mix(a[1], b[1], t);
-          targetY = mix(a[2], b[2], t) - scrollY;
-          targetProgress = clamp((current - start) / (end - start), 0, 1);
-          const scalePulse = Math.sin(targetProgress * Math.PI);
-          targetScale = (innerWidth <= 900 ? 1.34 : 1.62) - .10 * scalePulse;
-          targetRotX = -.38 + targetProgress * Math.PI * 3.5;
-          targetRotY = -.55 + targetProgress * Math.PI * 2.5;
-          targetRotZ = Math.sin(targetProgress * Math.PI * 2) * .045;
-        }
-
-        // Damped transforms for less rigid movement and smoother easing between segments.
-        const motionEase = 1 - Math.exp(-8.5 * dt);
-        const rotationEase = 1 - Math.exp(-6.5 * dt);
-        displayX = mix(displayX, targetX, motionEase);
-        displayY = mix(displayY, targetY, motionEase);
-        displayProgress = mix(displayProgress, targetProgress, 1 - Math.exp(-6 * dt));
-        displayScale = mix(displayScale, targetScale, rotationEase);
-        displayRotX = mix(displayRotX, targetRotX, rotationEase);
-        displayRotY = mix(displayRotY, targetRotY, rotationEase);
-        displayRotZ = mix(displayRotZ, targetRotZ, rotationEase);
-
-        if (active || !almostEqual(displayX, targetX, .3) || !almostEqual(displayY, targetY, .3)) {
-          const halfCanvas = canvasSize / 2;
-          canvas.style.transform = `translate3d(${displayX - halfCanvas}px,${displayY - halfCanvas}px,0)`;
-          king.scale.setScalar(displayScale);
-          king.rotation.x = displayRotX;
-          king.rotation.y = displayRotY;
-          king.rotation.z = displayRotZ;
-          renderer.render(scene, camera);
-        }
-
-        const settled =
-          almostEqual(current, scrollY, .15) &&
-          almostEqual(displayX, targetX, .3) &&
-          almostEqual(displayY, targetY, .3) &&
-          almostEqual(displayRotX, targetRotX, .003) &&
-          almostEqual(displayRotY, targetRotY, .003) &&
-          almostEqual(displayRotZ, targetRotZ, .002) &&
-          almostEqual(displayScale, targetScale, .002);
-
-        if (!settled) frame = requestAnimationFrame(render);
+      nextScene.add(ground);
+      if (ticket !== generation) {
+        nextScene.traverse(object => object.geometry?.dispose());
+        nextRenderer.dispose();
+        return;
       }
-
-      function syncCanvasSize() {
-        const nextSize = innerWidth <= 900 ? Math.min(300, innerWidth * .78) : 440;
-        if (Math.abs(nextSize - canvasSize) > .5) {
-          canvasSize = nextSize;
-          renderer.setSize(canvasSize, canvasSize, false);
-        }
-      }
-
-      function schedule() {
-        syncCanvasSize();
-        if (!frame && !document.hidden) frame = requestAnimationFrame(render);
-      }
-
-      function visibility() {
-        if(document.hidden){cancelAnimationFrame(frame);frame=0;}
-        else {current=scrollY;previous=0;schedule();}
-      }
-
-      addEventListener('scroll',schedule,{passive:true});
-      addEventListener('resize',schedule);
-      document.addEventListener('visibilitychange',visibility);
-      const observer = new ResizeObserver(schedule);
-      observer.observe(document.querySelector('main'));
-      dispose = () => {
-        cancelAnimationFrame(frame);
-        removeEventListener('scroll',schedule);
-        removeEventListener('resize',schedule);
-        document.removeEventListener('visibilitychange',visibility);
-        observer.disconnect();
-        const materials = new Set();
-        scene.traverse(object=>{object.geometry?.dispose();if(object.material)materials.add(object.material);});
-        materials.forEach(material=>material.dispose());
-        key.shadow.dispose();
-        renderer.dispose();
-      };
+      renderer = nextRenderer;
+      scene = nextScene;
+      king = nextKing;
+      camera = nextCamera;
+      keyLight = nextKey;
+      previous = 0;
       schedule();
-    } catch(error) {
-      dispose?.();
-      canvas.style.visibility='hidden';
-      console.warn('Rei 3D indisponível:',error);
+    } catch (error) {
+      if (ticket !== generation) return;
+      // Browser privacy settings, GPU blocklists, extensions and network failures.
+      console.info('Rei 3D: usando prévia de compatibilidade.', error);
+      schedule();
     }
   }
-  eligible.addEventListener('change',activate);
+
+  addEventListener('scroll', schedule, {passive: true});
+  addEventListener('resize', schedule);
+  document.addEventListener('visibilitychange', onVisibility);
+  const observer = new ResizeObserver(schedule);
+  observer.observe(document.querySelector('main'));
+  reducedMotion.addEventListener('change', activate);
+  size();
+  schedule();
   activate();
 }

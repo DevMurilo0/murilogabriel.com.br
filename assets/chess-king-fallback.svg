@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 560" role="img" aria-label="Rei de xadrez tridimensional">
+  <defs>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2=".15">
+      <stop offset="0" stop-color="#16191d"/><stop offset=".17" stop-color="#343a40"/>
+      <stop offset=".35" stop-color="#858c91"/><stop offset=".47" stop-color="#525961"/>
+      <stop offset=".68" stop-color="#262b30"/><stop offset=".87" stop-color="#596168"/>
+      <stop offset="1" stop-color="#14171a"/>
+    </linearGradient>
+    <linearGradient id="silver" x1="0" y1="0" x2="1" y2=".1">
+      <stop offset="0" stop-color="#2b2e32"/><stop offset=".24" stop-color="#92979b"/>
+      <stop offset=".49" stop-color="#d1d2d2"/><stop offset=".69" stop-color="#666d73"/>
+      <stop offset="1" stop-color="#1e2328"/>
+    </linearGradient>
+    <linearGradient id="bevel" x1="0" y1="0" x2=".92" y2=".78">
+      <stop offset="0" stop-color="#bfc5c8"/><stop offset=".34" stop-color="#707a83"/>
+      <stop offset=".65" stop-color="#313941"/><stop offset="1" stop-color="#111519"/>
+    </linearGradient>
+    <radialGradient id="base" cx=".38" cy=".15" r=".82">
+      <stop offset="0" stop-color="#a0a5a7"/><stop offset=".5" stop-color="#4b5258"/><stop offset="1" stop-color="#11161a"/>
+    </radialGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+  </defs>
+  <ellipse cx="256" cy="507" rx="132" ry="24" fill="#000" opacity=".3" filter="url(#shadow)"/>
+  <g stroke="#15191c" stroke-width="1.7" stroke-linejoin="round">
+    <path d="M120 469 C120 458 134 453 146 450 L334 450 C348 453 360 458 360 469 L360 486 C360 501 321 510 240 510 C160 510 120 500 120 486Z" fill="url(#base)"/>
+    <ellipse cx="240" cy="468" rx="120" ry="22" fill="url(#silver)"/>
+    <path d="M136 456 C139 446 151 438 169 435 L311 435 C330 438 343 446 344 456 C338 474 143 474 136 456Z" fill="url(#metal)"/>
+    <ellipse cx="240" cy="438" rx="80" ry="12" fill="url(#silver)"/>
+    <path d="M169 437 C184 422 195 410 201 395 C209 369 216 329 221 283 L259 283 C263 331 271 369 279 395 C285 412 297 422 311 437 C295 451 187 451 169 437Z" fill="url(#metal)"/>
+    <path d="M208 400 C215 362 224 321 226 287" fill="none" stroke="#bec1c2" stroke-width="6" stroke-linecap="round" opacity=".26"/>
+    <path d="M173 278 C175 266 195 258 203 253 L277 253 C285 258 305 266 307 278 C300 294 182 297 173 278Z" fill="url(#silver)"/>
+    <ellipse cx="240" cy="266" rx="67" ry="12" fill="url(#bevel)"/>
+    <path d="M187 248 C195 233 203 217 212 207 L268 207 C278 219 286 232 293 248 C285 265 195 265 187 248Z" fill="url(#metal)"/>
+    <path d="M195 217 C197 208 212 204 225 202 L255 202 C270 204 282 210 284 217 C274 229 206 229 195 217Z" fill="url(#silver)"/>
+    <path d="M221 200 C224 183 227 172 229 160 L251 160 C254 173 259 189 262 200 C254 210 229 211 221 200Z" fill="url(#metal)"/>
+    <ellipse cx="240" cy="164" rx="24" ry="8" fill="url(#silver)"/>
+    <path d="M230 152 L230 122 L201 122 L201 101 L230 101 L230 62 L250 62 L250 101 L279 101 L279 122 L250 122 L250 152Z" fill="url(#metal)" stroke="#15191c" stroke-width="6"/>
+    <path d="M228 61 L247 61 L247 101 L277 101 L277 116 L247 116 L247 152 L228 152 L228 116 L202 116 L202 102 L228 102Z" fill="url(#bevel)" stroke="#b4b9bc" stroke-width="1.5" opacity=".93"/>
+    <path d="M235 64 L235 148 M205 107 L269 107" fill="none" stroke="#f0f2f0" stroke-width="2.5" opacity=".4"/>
+  </g>
+  <ellipse cx="240" cy="477" rx="105" ry="11" fill="none" stroke="#cbd0d3" stroke-width="2" opacity=".28"/>
+</svg>
