@@ -192,7 +192,7 @@ addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); 
 if ('IntersectionObserver' in window && !reducedMotion) {
   // Só oculta para animação quando o JavaScript concluiu a renderização.
   // Se um script falhar antes daqui, todo o conteúdo continua visível.
-  const revealTargets = $('.reveal');
+  const revealTargets = $$('.reveal');
   const observer = new IntersectionObserver(entries => entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('is-visible');
@@ -205,7 +205,7 @@ if ('IntersectionObserver' in window && !reducedMotion) {
     observer.observe(el);
   });
 } else {
-  $('.reveal').forEach(el => el.classList.add('is-visible'));
+  $$('.reveal').forEach(el => el.classList.add('is-visible'));
 }
 
 const hero = $('[data-hero]');
