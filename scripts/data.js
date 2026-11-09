@@ -59,32 +59,11 @@ export const projects = [
   },
   {
     number: '04',
-    slug: 'escola-peralta',
-    title: 'Escola Peralta',
-    type: 'Sistema escolar / full-stack',
-    year: '2026',
-    featured: true,
-    description: 'Site institucional e portal acadêmico com autenticação, gestão de turmas e alunos, notas, frequência e administração escolar.',
-    objective: 'Conectar a apresentação pública da escola a ferramentas seguras que apoiam o trabalho de professores e administradores.',
-    technologies: ['React', 'TypeScript', 'Supabase', 'Cloudflare'],
-    repository: 'https://github.com/DevMurilo0/escola-peralta',
-    live: 'https://escola-peralta.escolaperalta.workers.dev/',
-    preview: {
-      kind: 'image',
-      poster: '/assets/escola-peralta-hero.jpg',
-      fallbackPoster: 'https://escola-peralta.escolaperalta.workers.dev/images/school/hero-escola.webp',
-      alt: 'Captura do hero da Escola Peralta, com título, navegação e fotografia institucional',
-      posterPosition: 'center top',
-      color: true
-    }
-  },
-  {
-    number: '05',
     slug: 'portal-erempaf',
     title: 'Portal EREMPAF',
     type: 'Portal escolar / gestão de turmas',
     year: '2026',
-    featured: false,
+    featured: true,
     description: 'Portal da comunidade escolar com calendário por turma, matérias, avisos, fotos, notificações push, histórico de alterações e edição protegida.',
     objective: 'Reunir informações antes dispersas em conversas e facilitar o acesso ao cardápio, SIEPE e à rotina de cada turma.',
     technologies: ['HTML', 'CSS', 'JavaScript', 'Firebase', 'Vercel'],
@@ -92,15 +71,56 @@ export const projects = [
     live: 'https://portalerempaf.vercel.app/',
     preview: {
       kind: 'image',
-      poster: '/assets/portalerempaf-hero-atualizado.jpg',
-      fallbackPoster: '/assets/portalerempaf-preview.webp',
-      alt: 'Página inicial atual do Portal EREMPAF com foto da Feira das Profissões, navegação e acessos rápidos',
+      poster: '/assets/portal-erempaf-2026.jpg',
+      fallbackPoster: '/assets/portalerempaf-hero-atualizado.jpg',
+      alt: 'Captura atual da página inicial do Portal EREMPAF, incluindo notícias e acessos rápidos',
+      posterPosition: 'center top',
+      color: true
+    }
+  },
+  {
+    number: '05',
+    slug: 'elo-institucional',
+    title: 'ELO INSTITUCIONAL',
+    type: 'Site institucional / extensão universitária',
+    year: '2026',
+    featured: true,
+    description: 'Portal institucional do projeto de extensão ELO, reunindo ações, agendas, publicações e conteúdos que aproximam universidade e comunidade.',
+    objective: 'Dar presença digital ao projeto e organizar suas iniciativas em uma navegação acessível, clara e responsiva.',
+    technologies: ['HTML', 'CSS', 'JavaScript', 'Cloudflare'],
+    repository: 'https://github.com/DevMurilo0/ELO.UFRB',
+    live: 'https://elo-ufrb.eloprototipo.workers.dev/',
+    preview: {
+      kind: 'image',
+      poster: '/assets/elo-institucional-2026.jpg',
+      alt: 'Captura atual da página inicial do ELO INSTITUCIONAL, com identidade visual e navegação',
       posterPosition: 'center top',
       color: true
     }
   },
   {
     number: '06',
+    slug: 'escola-peralta',
+    title: 'Escola Peralta',
+    type: 'Sistema escolar / full-stack',
+    year: '2026',
+    featured: false,
+    description: 'Site institucional e portal acadêmico com autenticação, gestão de turmas e alunos, notas, frequência e administração escolar.',
+    objective: 'Conectar a apresentação pública da escola a ferramentas seguras que apoiam o trabalho de professores e administradores.',
+    technologies: ['React', 'TypeScript', 'Supabase', 'Cloudflare'],
+    repository: 'https://github.com/DevMurilo0/escola-peralta',
+    live: 'https://escola-peralta.escolaperalta.workers.dev/',
+    preview: {
+      kind: 'image',
+      poster: '/assets/escola-peralta-2026.jpg',
+      fallbackPoster: '/assets/escola-peralta-hero.jpg',
+      alt: 'Captura atual do site da Escola Peralta, com sua identidade visual e apresentação institucional',
+      posterPosition: 'center top',
+      color: true
+    }
+  },
+  {
+    number: '07',
     slug: 'enem-planner',
     title: 'ENEM Planner',
     type: 'Aplicação web / planejamento de estudos',
